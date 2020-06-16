@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const bottomContainerHeight = 80.0;
+const bottomContainerColor = Color(0xFFEB1555);
+const activeCardColor = Color(0xFF1D1E33);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -16,17 +20,33 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Expanded(child: Row(
             children: <Widget>[
-              Expanded(child: ReusableCard(),),
-              Expanded(child: ReusableCard(),),
+              Expanded(child: ReusableCard(
+                color: activeCardColor,
+              ),),
+              Expanded(child: ReusableCard(
+                  color: activeCardColor,
+              ),),
             ],
           )),
-          Expanded(child: ReusableCard(),),
+          Expanded(child: ReusableCard(
+              color: activeCardColor,
+          ),),
           Expanded(child: Row(
             children: <Widget>[
-              Expanded(child: ReusableCard(),),
-              Expanded(child: ReusableCard(),),
+              Expanded(child: ReusableCard(
+                  color: activeCardColor,
+              ),),
+              Expanded(child: ReusableCard(
+                  color: activeCardColor,
+              ),),
             ],
           )),
+          Container(
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          ),
         ],
       )
     );
@@ -34,16 +54,19 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-  const ReusableCard({
-    Key key,
-}) : super(key: key);
+  //  const ReusableCard( {Key key,} ) : super(key: key);
+
+  ReusableCard( {@required this.color} );
+
+  // final -> makes this property immutable
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-      color: Color(0xFF1D1E33),
+      color: color,
     borderRadius: BorderRadius.circular(10.0),
     ),
     );
