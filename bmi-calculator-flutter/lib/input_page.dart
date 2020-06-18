@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 const bottomContainerColor = Color(0xFFEB1555);
@@ -22,6 +23,22 @@ class _InputPageState extends State<InputPage> {
             children: <Widget>[
               Expanded(child: ReusableCard(
                 color: activeCardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      FontAwesomeIcons.mars,
+                      size: 80.0,
+                    ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    Text('MALE', style: TextStyle(
+                      fontSize: 18.0,
+                      color: Color(0xFF8D8E98),
+                    ), )
+                  ],
+                ),
               ),),
               Expanded(child: ReusableCard(
                   color: activeCardColor,
@@ -56,14 +73,17 @@ class _InputPageState extends State<InputPage> {
 class ReusableCard extends StatelessWidget {
   //  const ReusableCard( {Key key,} ) : super(key: key);
 
-  ReusableCard( {@required this.color} );
+  ReusableCard( {@required this.color, this.cardChild} );
 
   // final -> makes this property immutable
   final Color color;
 
+  final Widget cardChild;
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
       color: color,
