@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:location_permissions/location_permissions.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -14,7 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Geolocator()..forceAndroidLocationManager = true;
 
     Position position = await Geolocator().getCurrentPosition(desiredAccuracy:
-    LocationAccuracy.high, locationPermissionLevel: GeolocationPermission.locationAlways);
+      LocationAccuracy.high);
     print(position);
   }
 
